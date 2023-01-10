@@ -107,31 +107,28 @@ class MyApp extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 _buildCurrencyCard(
+                  transform: const Offset(0, 0),
                   isInverted: false,
                   name: "Euro",
                   code: "EUR",
                   amount: "6 428",
                   icon: Icons.euro_rounded,
                 ),
-                Transform.translate(
-                  offset: const Offset(0, -20),
-                  child: _buildCurrencyCard(
-                    isInverted: true,
-                    name: "BitCoin",
-                    code: "BTC",
-                    amount: "8 762",
-                    icon: Icons.currency_bitcoin_rounded,
-                  ),
+                _buildCurrencyCard(
+                  transform: const Offset(0, -20),
+                  isInverted: true,
+                  name: "BitCoin",
+                  code: "BTC",
+                  amount: "8 762",
+                  icon: Icons.currency_bitcoin_rounded,
                 ),
-                Transform.translate(
-                  offset: const Offset(0, -40),
-                  child: _buildCurrencyCard(
-                    isInverted: false,
-                    name: "Dollar",
-                    code: "USD",
-                    amount: "627",
-                    icon: Icons.attach_money_rounded,
-                  ),
+                _buildCurrencyCard(
+                  transform: const Offset(0, -40),
+                  isInverted: false,
+                  name: "Dollar",
+                  code: "USD",
+                  amount: "627",
+                  icon: Icons.monetization_on_outlined,
                 ),
               ],
             ),
@@ -142,69 +139,78 @@ class MyApp extends StatelessWidget {
   }
 
 // isInverted는 색상 반전을 위한 변수
-  Widget _buildCurrencyCard({required bool isInverted, required String name, required String code, required String amount, required IconData icon}) {
+  Widget _buildCurrencyCard(
+      {required Offset transform,
+      required bool isInverted,
+      required String name,
+      required String code,
+      required String amount,
+      required IconData icon}) {
     const blackColor = Color(0xff1F2123);
-    return Container(
-      //아이콘의 위치를 박스를 벗어나지 않게 해줌.
-      clipBehavior: Clip.hardEdge,
-      decoration: BoxDecoration(
-        // isInverted가 true이면 배경색을 white
-        color: isInverted ? Colors.white : blackColor,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(30),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  name,
-                  style: TextStyle(
+    return Transform.translate(
+      offset: transform,
+      child: Container(
+        //아이콘의 위치를 박스를 벗어나지 않게 해줌.
+        clipBehavior: Clip.hardEdge,
+        decoration: BoxDecoration(
+          // isInverted가 true이면 배경색을 white
+          color: isInverted ? Colors.white : blackColor,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(30),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    style: TextStyle(
+                      color: isInverted ? blackColor : Colors.white,
+                      fontSize: 32,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Text(
+                        amount,
+                        style: TextStyle(
+                          color: isInverted ? blackColor : Colors.white,
+                          fontSize: 20,
+                        ),
+                      ),
+                      const SizedBox(width: 5),
+                      Text(
+                        code,
+                        style: TextStyle(
+                          color: isInverted ? blackColor : Colors.white.withOpacity(0.8),
+                          fontSize: 20,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              //scale (아이콘의 크기):  Row안이지만 크기는 벗어날 수 있게 해줌.
+              Transform.scale(
+                scale: 2.2,
+                //translate (아이콘의 위치): 아이콘이 보여지는 위치를 바꿀 수있음
+                child: Transform.translate(
+                  // x: -5, y: 10
+                  offset: const Offset(-5, 10),
+                  child: Icon(
+                    icon,
                     color: isInverted ? blackColor : Colors.white,
-                    fontSize: 32,
-                    fontWeight: FontWeight.w600,
+                    size: 88,
                   ),
                 ),
-                const SizedBox(height: 10),
-                Row(
-                  children: [
-                    Text(
-                      amount,
-                      style: TextStyle(
-                        color: isInverted ? blackColor : Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
-                    const SizedBox(width: 5),
-                    Text(
-                      code,
-                      style: TextStyle(
-                        color: isInverted ? blackColor : Colors.white.withOpacity(0.8),
-                        fontSize: 20,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            //scale (아이콘의 크기):  Row안이지만 크기는 벗어날 수 있게 해줌.
-            Transform.scale(
-              scale: 2.2,
-              //translate (아이콘의 위치): 아이콘이 보여지는 위치를 바꿀 수있음
-              child: Transform.translate(
-                // x: -5, y: 10
-                offset: const Offset(-5, 10),
-                child: Icon(
-                  icon,
-                  color: isInverted ? blackColor : Colors.white,
-                  size: 88,
-                ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

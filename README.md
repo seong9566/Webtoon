@@ -1,16 +1,7 @@
 # webtoon
 
-A new Flutter project.
+- 웹툰 UI 시작 전 간단한 정적인 페이지 만들기 
 
-## Getting Started
+## 만들어진 화면
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img width="265" alt="image" src="https://user-images.githubusercontent.com/112357327/211594384-3dc5fef6-269d-4569-b022-238e5a716aa7.png">

@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         backgroundColor: const Color(0xff181818),
         body: Padding(
           //좌 우 패딩 horizontal
-          padding: const EdgeInsets.symmetric(horizontal: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -68,44 +68,42 @@ class MyApp extends StatelessWidget {
               const SizedBox(height: 30),
               Row(
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.amber,
-                      borderRadius: BorderRadius.circular(45),
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 20,
-                        horizontal: 30,
-                      ),
-                      child: Text(
-                        "Transfer",
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
+                  _buildCustomButton(
+                    text: "Transfer",
+                    bgColor: Colors.amber,
+                    textColor: Colors.black,
                   ),
-                  const SizedBox(width: 20),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.amber,
-                      borderRadius: BorderRadius.circular(45),
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 20,
-                        horizontal: 30,
-                      ),
-                      child: Text(
-                        "Transfer",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ),
+                  const SizedBox(width: 30),
+                  _buildCustomButton(
+                    text: "Request",
+                    bgColor: const Color(0xff1F2123),
+                    textColor: Colors.white,
                   ),
                 ],
               )
             ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCustomButton({required String text, required Color bgColor, required Color textColor}) {
+    return Container(
+      decoration: BoxDecoration(
+        color: bgColor,
+        borderRadius: BorderRadius.circular(45),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 20,
+          horizontal: 40,
+        ),
+        child: Text(
+          text,
+          style: TextStyle(
+            fontSize: 20,
+            color: textColor,
           ),
         ),
       ),

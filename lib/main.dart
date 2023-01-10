@@ -12,21 +12,22 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          backgroundColor: Colors.black,
-          body: Column(
-            children: [
-              Row(
-                children: [
-                  Column(
-                    children: [
-                      Text("Hey, Selena"),
-                      Text("Welcone back"),
-                    ],
-                  )
-                ],
-              ),
-            ],
-          )),
+        backgroundColor: Colors.black,
+        body: Column(
+          children: [
+            Row(
+              children: [
+                Column(
+                  children: [
+                    Text("Hey, Selena"),
+                    Text("Welcone back"),
+                  ],
+                )
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

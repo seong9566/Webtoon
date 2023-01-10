@@ -57,6 +57,7 @@ class MyApp extends StatelessWidget {
               ),
               const SizedBox(height: 5),
               const Text(
+                // 달러 표기를 사용하기 위해서 \가 필요함.
                 "\$5 194 482",
                 style: TextStyle(
                   color: Colors.white,

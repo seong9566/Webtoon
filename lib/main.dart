@@ -22,6 +22,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        textTheme: TextTheme(
+            titleLarge: TextStyle(
+          color: Colors.red,
+        )),
+      ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Color(0xFFF4EDDB),
@@ -29,30 +35,32 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                "Click Count",
-                style: TextStyle(fontSize: 30),
-              ),
-              for (var n in number)
-                Text(
-                  "$n",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              IconButton(
-                onPressed: () {
-                  onClicked();
-                },
-                icon: Icon(
-                  Icons.add_box_outlined,
-                  size: 40,
-                ),
-              ),
+              MyLargeTitle(),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class MyLargeTitle extends StatefulWidget {
+  const MyLargeTitle({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<MyLargeTitle> createState() => _MyLargeTitleState();
+}
+
+class _MyLargeTitleState extends State<MyLargeTitle> {
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      "My Large Title",
+      style: TextStyle(
+        fontSize: 30,
+        color: Theme.of(context).textTheme.titleLarge!.color,
       ),
     );
   }
